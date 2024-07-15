@@ -84,6 +84,14 @@ To install HAProxy, follow these steps:
   ```sh
   sudo systemctl status haproxy
   ```
+- **Create private key:**
+  ```sh
+  openssl genpkey -algorithm RSA -out /etc/ssl/private/selfsigned.key
+  ```
+- **Create self-signed cert:**
+  ```sh
+  openssl req -new -x509 -key /etc/ssl/private/selfsigned.key -out /etc/ssl/certs/selfsigned.crt -days 365 -subj "/C=US/ST=State/L=City/O=Organization/OU=Department/CN=example.com"
+  ```
 
 ## Features
 - Load balancing for TCP and HTTP applications
